@@ -1,0 +1,42 @@
+Windows Registry Editor Version 5.00
+
+; ESP32-J2534 Bridge — Registro J2534 para Dianalyzer (Stellantis)
+;
+; INSTRUCOES:
+;  1. Copie esp32_j2534.dll para C:\esp32_j2534\bin\
+;  2. Copie config.ini    para C:\esp32_j2534\
+;  3. Edite config.ini com a porta COM do seu ESP32
+;  4. Execute este .reg como Administrador (duplo clique → Sim)
+;  5. Reinicie o Dianalyzer
+;
+; IMPORTANTE: o Dianalyzer é 32-bit → usa WOW6432Node em sistemas 64-bit
+
+; --- Entrada 32-bit (Dianalyzer x86 em Windows 64-bit) ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\PassThruSupport.04.04\ESP32-J2534]
+"Name"="ESP32 J2534 Bridge"
+"Vendor"="DIY"
+"Version"=dword:00000404
+"FunctionLibrary"="C:\\esp32_j2534\\bin\\esp32_j2534.dll"
+"ConfigApplication"=""
+"DeviceAvailable"=dword:00000001
+"ProtocolsSupported"=dword:00000060
+"ISO15765"=dword:00000001
+"SW_ISO15765_PS"=dword:00000001
+"CAN"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\PassThruSupport.04.04\ESP32-J2534\Settings]
+"Num Messages Read"=dword:00000004
+"Num Messages Write"=dword:00000004
+
+; --- Entrada 64-bit (caso o Dianalyzer seja x64) ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\PassThruSupport.04.04\ESP32-J2534]
+"Name"="ESP32 J2534 Bridge"
+"Vendor"="DIY"
+"Version"=dword:00000404
+"FunctionLibrary"="C:\\esp32_j2534\\bin\\esp32_j2534.dll"
+"ConfigApplication"=""
+"DeviceAvailable"=dword:00000001
+"ProtocolsSupported"=dword:00000060
+"ISO15765"=dword:00000001
+"SW_ISO15765_PS"=dword:00000001
+"CAN"=dword:00000001
