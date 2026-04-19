@@ -8,9 +8,11 @@ add_library(esp32_j2534 SHARED
     src/serial_comm.cpp
 )
 
-target_include_directories(esp32_j2534 PRIVATE include)
+target_include_directories(esp32_j2534 PRIVATE
+    include
+    ${CMAKE_SOURCE_DIR}
+)
 
-# Gera o .def automaticamente para exportar as funções sem name-mangling
 set_target_properties(esp32_j2534 PROPERTIES
     LINK_FLAGS "/DEF:${CMAKE_CURRENT_SOURCE_DIR}/esp32_j2534.def"
 )
